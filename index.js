@@ -14,10 +14,13 @@ mongoose.connect('mongodb://localhost/virus-downloader', {
 })
 
 // Bodyparser garbo
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 
 routes(app);
+
+// This is how to serve static files
+app.use(express.static('images'))
 
 app.get('/', (req, res) => {
   res.send(`im behind ${PORT_NUMBER} proxies`);
