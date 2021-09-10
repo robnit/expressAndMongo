@@ -1,4 +1,4 @@
-import { addBird } from "../controllers/controllers"
+import { addBird, destroyBird, getBird, getBirds, updateBird } from "../controllers/controllers"
 
 const routes = app => {
   app.route('/birds')
@@ -7,20 +7,13 @@ const routes = app => {
     console.log(`request from ${req.originalUrl}`)
     console.log(`request type ${req.method}`)
     next();
-  }, (req, res, next) => {
-    res.send('YOU GOT BIRDS')
-  })
-
+  }, getBirds)
   .post(addBird)
 
   app.route('/birds/:id')
-  .put((req, res) => {
-    res.send('YOU PUT A BIRD')
-  })
-
-  .delete((req, res) => {
-    res.send('YOU DELETED A BIRD')
-  })
+  .get(getBird)
+  .put(updateBird)
+  .delete(destroyBird)
 }
 
 export default routes;

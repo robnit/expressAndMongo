@@ -8,7 +8,7 @@ const app = express();
 
 // Mongoose garbo
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/nno', {
+mongoose.connect('mongodb://localhost/virus-downloader', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
