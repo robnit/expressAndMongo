@@ -1,12 +1,17 @@
+import { addBird } from "../controllers/controllers"
+
 const routes = app => {
   app.route('/birds')
-  .get((req, res) => {
+  .get((req, res, next) => {
+    // this is middleware
+    console.log(`request from ${req.originalUrl}`)
+    console.log(`request type ${req.method}`)
+    next();
+  }, (req, res, next) => {
     res.send('YOU GOT BIRDS')
   })
 
-  .post((req, res) => {
-    res.send('YOU POSTED BIRDS')
-  })
+  .post(addBird)
 
   app.route('/birds/:id')
   .put((req, res) => {
